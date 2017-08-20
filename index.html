@@ -39,7 +39,7 @@
 
         function checkLoginState() {
             FB.getLoginStatus(function(response) {
-                statusChangeCallback(response);
+                console.log(response);
             });
 
             FB.api('/me', 'GET', {
