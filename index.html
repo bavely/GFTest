@@ -14,9 +14,13 @@
 
     <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" onlogin="checkLoginState();"></div>
     <div id="fb-root"></div>
+    <br/>
     <!--Google Stuff -->
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <br/>
     <a href="#" onclick="signOut();">Google Sign out</a>
+    <br/>
+    <br/>
     <div class="here"></div>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
@@ -54,7 +58,7 @@
                         fields: 'first_name,last_name,name,id, email'
                     }, function(data) {
                         console.log(data);
-                        $(".here").append(JSON.stringify(data));
+                        $(".here").append("<br/> <br/>" + JSON.stringify(data) + "<br/> <br/>");
                     });
                 } else {
                     console.log("not loggedin");
@@ -74,14 +78,14 @@
             console.log('Name: ' + profile.getName());
             console.log('Image URL: ' + profile.getImageUrl());
             console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-            $(".here").append(profile.getEmail());
+            $(".here").append("<br/> <br/>" + profile.getEmail() + "<br/> <br/>");
         }
 
         function signOut() {
             var auth2 = gapi.auth2.getAuthInstance();
             auth2.signOut().then(function() {
                 console.log('User signed out.');
-                $(".here").append("User signed out.");
+                $(".here").append("<br/> <br/> User signed out.");
             });
         }
     </script>
