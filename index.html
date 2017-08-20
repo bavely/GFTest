@@ -16,7 +16,8 @@
     <div id="fb-root"></div>
     <!--Google Stuff -->
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    <a href="#" onclick="signOut();">Sign out</a>
+    <a href="#" onclick="signOut();">Google Sign out</a>
+    <div class="here"></div>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 
@@ -53,6 +54,7 @@
                         fields: 'first_name,last_name,name,id, email'
                     }, function(data) {
                         console.log(data);
+                        $(".here").append(JSON.stringify(data));
                     });
                 } else {
                     console.log("not loggedin");
@@ -67,16 +69,19 @@
         //-----------------------------GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOGLE----------------------------
         function onSignIn(googleUser) {
             var profile = googleUser.getBasicProfile();
+            console.log(profile);
             console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
             console.log('Name: ' + profile.getName());
             console.log('Image URL: ' + profile.getImageUrl());
             console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            $(".here").append(profile.getEmail());
         }
 
         function signOut() {
             var auth2 = gapi.auth2.getAuthInstance();
             auth2.signOut().then(function() {
                 console.log('User signed out.');
+                $(".here").append("User signed out.");
             });
         }
     </script>
