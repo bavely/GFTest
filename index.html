@@ -5,6 +5,7 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-client_id" content="280548920560-u13cbso5e0b21ouc0aqokmf7rlfvt4po.apps.googleusercontent.com">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
@@ -12,7 +13,12 @@
 
     <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" onlogin="checkLoginState();"></div>
     <div id="fb-root"></div>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
     <script>
+        //-------------------FaceBook-----------------------//
         window.fbAsyncInit = function() {
             FB.init({
                 appId: '915773281910101',
@@ -52,6 +58,16 @@
             });
 
 
+        }
+
+
+        //-----------------------------GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOGLE----------------------------
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
         }
     </script>
 </body>
