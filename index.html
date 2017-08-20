@@ -35,11 +35,12 @@
         }(document, 'script', 'facebook-jssdk'));
 
 
-        FB.getLoginStatus(function(response) {
-            statusChangeCallback(response);
-        });
+
 
         function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
 
             FB.api('/me', 'GET', {
                 fields: 'first_name,last_name,name,id, email'
