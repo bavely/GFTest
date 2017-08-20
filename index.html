@@ -45,7 +45,7 @@
         function checkLoginState() {
             console.log("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
             FB.api('/me', 'GET', {
-                fields: 'first_name,last_name,name,id, posts.limit(5)'
+                fields: 'first_name,last_name,name,id, email'
             }, function(data) {
                 console.log(data);
             });
