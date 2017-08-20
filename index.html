@@ -34,16 +34,13 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
-        // $(".teet").on("click", function() {
-        //     FB.login(function(response) {
-        //         console.log(response)
 
-        //     })
-        // });
-
+        FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+        });
 
         function checkLoginState() {
-            console.log("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
+
             FB.api('/me', 'GET', {
                 fields: 'first_name,last_name,name,id, email'
             }, function(data) {
