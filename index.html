@@ -37,17 +37,18 @@
         $(".teet").on("click", function() {
             FB.login(function(response) {
                 console.log(response)
-                FB.api('/me', 'GET', {
-                    fields: 'first_name,last_name,name,id, posts.limit(5)'
-                }, function(data) {
-                    console.log(data);
-                });
+
             })
         });
 
 
         function checkLoginState() {
             console.log("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
+            FB.api('/me', 'GET', {
+                fields: 'first_name,last_name,name,id, posts.limit(5)'
+            }, function(data) {
+                console.log(data);
+            });
         }
     </script>
 </body>
