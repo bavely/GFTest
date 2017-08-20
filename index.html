@@ -5,6 +5,7 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="280548920560-u13cbso5e0b21ouc0aqokmf7rlfvt4po.apps.googleusercontent.com">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -15,6 +16,7 @@
     <div id="fb-root"></div>
     <!--Google Stuff -->
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <a href="#" onclick="signOut();">Sign out</a>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 
@@ -69,6 +71,13 @@
             console.log('Name: ' + profile.getName());
             console.log('Image URL: ' + profile.getImageUrl());
             console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        }
+
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function() {
+                console.log('User signed out.');
+            });
         }
     </script>
 </body>
