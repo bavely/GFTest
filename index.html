@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <fb:login-button scope="public_profile,email" class="teet" onlogin="checkLoginState();">
+    <fb:login-button scope="public_profile,email" onclick="FB.login();" class="teet" onlogin="checkLoginState();">
     </fb:login-button>
 
     <script>
@@ -34,12 +34,12 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
-        $(".teet").on("click", function() {
-            FB.login(function(response) {
-                console.log(response)
+        // $(".teet").on("click", function() {
+        //     FB.login(function(response) {
+        //         console.log(response)
 
-            })
-        });
+        //     })
+        // });
 
 
         function checkLoginState() {
