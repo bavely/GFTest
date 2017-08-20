@@ -9,8 +9,6 @@
 </head>
 
 <body>
-    <!-- <fb:login-button scope="public_profile,email" onclick="FB.login();" class="teet" onlogin="checkLoginState();">
-    </fb:login-button> -->
 
     <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" onlogin="checkLoginState();"></div>
     <div id="fb-root"></div>
@@ -41,13 +39,19 @@
         function checkLoginState() {
             FB.getLoginStatus(function(response) {
                 console.log(response);
+                if (response.status === 'connected') {
+                    FB.api('/me', 'GET', {
+                        fields: 'first_name,last_name,name,id, email'
+                    }, function(data) {
+                        console.log(data);
+                    });
+                } else {
+                    console.log("not loggedin");
+                }
+
             });
 
-            FB.api('/me', 'GET', {
-                fields: 'first_name,last_name,name,id, email'
-            }, function(data) {
-                console.log(data);
-            });
+
         }
     </script>
 </body>
