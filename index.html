@@ -9,9 +9,11 @@
 </head>
 
 <body>
-    <fb:login-button scope="public_profile,email" onclick="FB.login();" class="teet" onlogin="checkLoginState();">
-    </fb:login-button>
+    <!-- <fb:login-button scope="public_profile,email" onclick="FB.login();" class="teet" onlogin="checkLoginState();">
+    </fb:login-button> -->
 
+    <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+    <div id="fb-root"></div>
     <script>
         window.fbAsyncInit = function() {
             FB.init({
@@ -23,14 +25,13 @@
             FB.AppEvents.logPageView();
         };
 
+
         (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {
-                return;
-            }
+            if (d.getElementById(id)) return;
             js = d.createElement(s);
             js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=915773281910101";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
